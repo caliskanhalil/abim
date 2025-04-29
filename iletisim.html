@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İletişim</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 32px;
+      color: #333;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #000;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 40px 20px;
+      background-color: #ffffff;
+    }
+
+    .info-box {
+      background: #f9f9f9;
+      color: #444;
+      text-align: center;
+      padding: 25px 15px;
+      width: 220px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .info-box i {
+      font-size: 32px;
+      color: #1976d2;
+      margin-bottom: 10px;
+    }
+
+    .info-box h3 {
+      margin-top: 10px;
+    }
+
+    .info-box a {
+      color: #1976d2;
+      text-decoration: none;
+    }
+
+    .contact-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding: 50px 20px;
+      background-color: #e1f5fe;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .map-container {
+      flex: 1;
+      min-width: 300px;
+      height: 350px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .form-container h2 {
+      color: #0d47a1;
+      margin-bottom: 20px;
+    }
+
+    .form-container form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-container input,
+    .form-container textarea {
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .form-container button {
+      padding: 12px;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .form-container button:hover {
+      background-color: #1565c0;
+    }
+
+    footer {
+      background-color: #e3f2fd;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-section {
+        flex-direction: column;
+      }
+
+      .map-container {
+        height: 300px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>İletişim</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Anasayfa</a></li>
+        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+        <li><a href="egitimler.php">Eğitimler</a></li>
+        <li><a href="blog.php">Blog</a></li>
+        <li><a href="youtube.html">YouTube</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="contact-info">
+    <div class="info-box">
+      <i class="fas fa-map-marker-alt"></i>
+      <h3>Adres</h3>
+      <p>SoHo 94 Broadway St<br>New York, NY 1001</p>
+    </div>
+    <div class="info-box">
+      <i class="fas fa-phone"></i>
+      <h3>Telefon</h3>
+      <p>234-9876-5400<br>888-0123-4567 (Ücretsiz)</p>
+    </div>
+    <div class="info-box">
+      <i class="fas fa-fax"></i>
+      <h3>Faks</h3>
+      <p>1-234-567-8900</p>
+    </div>
+    <div class="info-box">
+      <i class="fas fa-envelope"></i>
+      <h3>E-posta</h3>
+      <p><a href="mailto:hello@theme.com">hello@theme.com</a></p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.6893892823995!2d-74.00468448459144!3d40.71952687933164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a316b4a1fcb%3A0x2d3b3c2e51e193b1!2s94%20Broadway%2C%20New%20York%2C%20NY%2010006%2C%20USA!5e0!3m2!1str!2str!4v1714399999999" 
+        width="100%" 
+        height="100%" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div class="form-container">
+      <h2>Bizimle İletişime Geçin</h2>
+      <form>
+        <input type="text" placeholder="Adınızı giriniz" required>
+        <input type="email" placeholder="E-posta adresiniz" required>
+        <textarea rows="5" placeholder="Mesajınız" required></textarea>
+        <button type="submit">Gönder</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>Tüm hakları saklıdır &copy; 2025</p>
+  </footer>
+</body>
+</html>

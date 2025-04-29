@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Yönetim Paneli</title>
+  <style>
+    /* --- Genel Düzen --- */
+    body, html {
+      margin: 0; padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+      color: #333;
+    }
+    .admin-container {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* --- Sidebar --- */
+    .sidebar {
+      width: 250px;
+      background: #2f3640;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar h2 {
+      margin: 20px;
+      font-size: 1.4em;
+      text-align: center;
+    }
+    .menu-item {
+      cursor: pointer;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+    .menu-item:hover {
+      background: #41485a;
+    }
+    .submenu {
+      display: none;
+      flex-direction: column;
+      background: #3b4254;
+    }
+    .submenu a {
+      padding: 10px 40px;
+      color: #ddd;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .submenu a:hover {
+      background: #4b5370;
+    }
+
+    /* --- Main İçerik --- */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* --- Topbar --- */
+    .topbar {
+      height: 60px;
+      background: #fff;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 20px;
+    }
+    .profile {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+    }
+    .profile img {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .profile-name { margin-right: 5px; }
+    .profile-dropdown {
+      display: none;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .profile-dropdown a {
+      display: block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #333;
+      transition: background 0.2s;
+    }
+    .profile-dropdown a:hover {
+      background: #f0f0f0;
+    }
+
+    /* --- İçerik Alanı --- */
+    .content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      background: #f5f6fa;
+    }
+  </style>
+</head>
+<body>
+
+<div class="admin-container">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>Admin Paneli</h2>
+
+    <div class="menu-item" data-toggle="eğitimler">
+      Eğitimler <span>&#9662;</span>
+    </div>
+    <div class="submenu" id="eğitimler">
+      <a href="admin_egitimler.php">Eğitimleri Yönet</a>
+      <a href="admin_basvuru.php">Başvuruları Görüntüle</a>
+
+    </div>
+
+    <div class="menu-item" data-toggle="bloglar">
+      Bloglar <span>&#9662;</span>
+    </div>
+    <div class="submenu" id="bloglar">
+      <a href="admin_blog.php">Blogları Yönet</a>
+    </div>
+
+    <div class="menu-item" data-toggle="youtube">
+      YouTube <span>&#9662;</span>
+    </div>
+    <div class="submenu" id="youtube">
+      <a href="admin_youtube.php">Videoları Yönet</a>
+      <a href="admin_yeni_video.php">Yeni Video Ekle</a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="profile" id="profileToggle">
+        <img src="https://via.placeholder.com/36" alt="Profil">
+        <span class="profile-name">Admin</span>
+        <span>&#9662;</span>
+        <div class="profile-dropdown" id="profileDropdown">
+          <a href="#">Profilim</a>
+          <a href="#">Ayarlar</a>
+          <a href="#">Çıkış Yap</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- İçerik -->
+    <section class="content">
+      <h1>Hoş Geldiniz, Admin!</h1>
+      <p>Sol menüden bir bölüm seçerek içerik yönetimine başlayabilirsiniz.</p>
+    </section>
+  </div>
+</div>
+
+<script>
+  // Sidebar açılır menüler
+  document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const id = item.getAttribute('data-toggle');
+      document.querySelectorAll('.submenu').forEach(sm => sm.style.display = 'none');
+      const submenu = document.getElementById(id);
+      submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+    });
+  });
+
+  // Profil dropdown
+  const profileToggle = document.getElementById('profileToggle');
+  const profileDropdown = document.getElementById('profileDropdown');
+  profileToggle.addEventListener('click', e => {
+    e.stopPropagation();
+    profileDropdown.style.display = profileDropdown.style.display === 'block' ? 'none' : 'block';
+  });
+  window.addEventListener('click', () => {
+    profileDropdown.style.display = 'none';
+  });
+</script>

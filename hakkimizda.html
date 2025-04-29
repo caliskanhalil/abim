@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hakkımızda</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #f4f4f4;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 32px;
+      color: #333;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #000;
+    }
+
+    .about-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 10%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .text-content {
+      max-width: 600px;
+      transition: all 0.3s ease;
+    }
+
+    .text-content h1 span {
+      font-size: 56px;
+      color: #222;
+      font-weight: 800;
+    }
+
+    .text-content h3 {
+      color: #444;
+      margin: 20px 0 10px;
+      font-weight: 500;
+    }
+
+    .text-content p {
+      font-size: 18px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .image-content img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+    .image-content img:hover {
+      transform: scale(1.05) rotate(-1deg);
+    }
+
+    .bg-icons {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .bg-icons i {
+      position: absolute;
+      font-size: 24px;
+      color: rgba(0, 0, 0, 0.3);
+      animation: floatIcons 10s linear infinite;
+    }
+
+    @keyframes floatIcons {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.3;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .gallery-section {
+      padding: 40px 10%;
+      text-align: center;
+    }
+
+    .thumbnail-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .thumbnail {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+
+    .thumbnail img {
+      display: block;
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hakkımızda</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Anasayfa</a></li>
+        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+        <li><a href="egitimler.php">Eğitimler</a></li>
+        <li><a href="blog.php">Blog</a></li>
+        <li><a href="youtube.html">YouTube</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="bg-icons"></div>
+
+  <div class="about-container">
+    <div class="text-content">
+      <h1><span>hakkımızda.</span></h1>
+      <h3 id="aboutTitle">Biz yaratıcı teknolojilerle büyüyen bir ekibiz.</h3>
+      <p id="aboutText">
+        2005’ten bu yana, zor görünen teknolojik sorunları sade, güzel ve anlaşılır çözümlere dönüştürmeyi seviyoruz. Piksel itmediğimiz zamanlarda kod yazıyor, kahve içiyor ya da atölyede bir şeyler üretiyoruz.
+      </p>
+    </div>
+    <div class="image-content">
+      <img id="aboutImage" src="uploads/ERBAKAN.jpg" alt="Profil Fotoğrafı" />
+    </div>
+  </div>
+
+  <div class="gallery-section">
+    <div class="thumbnail-container">
+      <div class="thumbnail" onclick="showGalleryContent(0)">
+        <img src="uploads/banner.jpg" alt="Fotoğraf 1">
+      </div>
+      <div class="thumbnail" onclick="showGalleryContent(1)">
+        <img src="uploads/banner.jpg" alt="Fotoğraf 2">
+      </div>
+      <div class="thumbnail" onclick="showGalleryContent(2)">
+        <img src="uploads/ERBAKAN.jpg" alt="Fotoğraf 3">
+      </div>
+      <div class="thumbnail" onclick="showGalleryContent(3)">
+        <img src="uploads/banner.jpg" alt="Fotoğraf 4">
+      </div>
+      <div class="thumbnail" onclick="showGalleryContent(4)">
+        <img src="uploads/man-1.jpg" alt="Fotoğraf 5">
+      </div>
+      <div class="thumbnail" onclick="showGalleryContent(5)">
+        <img src="uploads/ERBAKAN.jpg" alt="Fotoğraf 6">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Arka plan ikonlarını oluştur
+    const icons = ['💻', '📱', '🔌', '🧠', '🔧', '📡', '🖱️', '🧪', '📷'];
+    const container = document.querySelector('.bg-icons');
+
+    for (let i = 0; i < 50; i++) {
+      const icon = document.createElement('i');
+      icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+      icon.style.left = `${Math.random() * 100}%`;
+      icon.style.top = `${Math.random() * 100}%`;
+      icon.style.fontSize = `${16 + Math.random() * 24}px`;
+      icon.style.animationDuration = `${8 + Math.random() * 12}s`;
+      container.appendChild(icon);
+    }
+
+    // Galeri verileri
+    const galleryData = [
+      {
+        text: "Kurucularımız teknoloji tutkusu ile yola çıktı.",
+        image: "uploads/banner.jpg"
+      },
+      {
+        text: "İstanbul'daki ilk ofisimizden bir manzara.",
+        image: "uploads/banner.jpg"
+      },
+      {
+        text: "Ekip üyelerimizden biri çalışırken.",
+        image: "uploads/ERBAKAN.jpg"
+      },
+      {
+        text: "Modern ekipmanlarımız ile eğitim veriyoruz.",
+        image: "uploads/banner.jpg"
+      },
+      {
+        text: "Her gün yeni projeler geliştiriyoruz.",
+        image: "uploads/man-1.jpg"
+      },
+      {
+        text: "Bitkilerle dolu yaratıcı bir ofis ortamı.",
+        image: "uploads/ERBAKAN.jpg"
+      }
+    ];
+
+    function showGalleryContent(index) {
+      const textEl = document.getElementById("aboutText");
+      const titleEl = document.getElementById("aboutTitle");
+      const imageEl = document.getElementById("aboutImage");
+
+      textEl.textContent = galleryData[index].text;
+      titleEl.textContent = "Yeni Hikayemiz";
+      imageEl.src = galleryData[index].image;
+    }
+  </script>
+</body>
+</html>

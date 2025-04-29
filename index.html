@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benim Web Sitem</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+   
+.counters {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  background: #eee;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.counter h2 {
+  font-size: 3em;
+  margin-bottom: 10px;
+  color: #4CAF50;
+}
+
+.counter p {
+  font-size: 1.2em;
+}
+
+.about {
+  position: relative;
+  padding: 80px 20px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #4e9af1 0%, #8fc1ff 100%);
+  color: white;
+  text-align: center;
+}
+
+.bubbles {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  animation: rise 8s infinite ease-in;
+}
+
+/* Baloncukları farklı boyut ve pozisyonlara ayarla */
+.bubble:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-duration: 6s; animation-delay: 0s; }
+.bubble:nth-child(2) { width: 40px; height: 40px; left: 30%; animation-duration: 8s; animation-delay: 2s; }
+.bubble:nth-child(3) { width: 60px; height: 60px; left: 50%; animation-duration: 7s; animation-delay: 4s; }
+.bubble:nth-child(4) { width: 30px; height: 30px; left: 70%; animation-duration: 9s; animation-delay: 1s; }
+.bubble:nth-child(5) { width: 50px; height: 50px; left: 85%; animation-duration: 5s; animation-delay: 3s; }
+
+@keyframes rise {
+  0%   { transform: translateY(0)   scale(1); opacity: 0.6; }
+  50%  { opacity: 0.3; }
+  100% { transform: translateY(-1200px) scale(1.5); opacity: 0; }
+}
+
+.about-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.about-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: white;
+  color: #4e9af1;
+  font-weight: bold;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.about-btn:hover {
+  background-color: #4e9af1;
+  color: white;
+}
+
+.courses {
+  padding: 60px 20px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.courses h2 {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.course-list {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.course-item {
+  position: relative;
+  background: #fff;
+  padding: 60px 20px 20px;
+  border-radius: 15px;
+  width: 260px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.course-item .icon {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.course-item h3 {
+  margin-top: 10px;
+  font-size: 1.3em;
+  color: #333;
+}
+
+.course-item p {
+  font-size: 0.95em;
+  color: #666;
+  margin: 15px 0 25px;
+  line-height: 1.4;
+}
+
+.enroll-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.enroll-btn:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .course-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+.testimonials {
+  padding: 60px 20px; background: #fff; text-align: center;
+}
+.testimonials h2 {
+  font-size: 2.5em; margin-bottom: 20px; color: #333;
+}
+.testimonials-wrapper {
+  position: relative;  margin: 0 auto;
+}
+.testimonials-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 40px;
+  padding: 20px 0;
+  /* scroll çubuğunu gizle */
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE 10+ */
+}
+.testimonials-container::-webkit-scrollbar {
+  display: none;                   /* Chrome, Safari, Opera */
+}
+.testimonials-container::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2); border-radius: 4px;
+}
+.testimonial-card {
+  width: 500px;
+  background-color: #fff;                  /* Beyaz kutu arkası */
+  border-radius: 10px;                     /* Hafif yuvarlatılmış köşeler */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Daha belirgin gölge */
+  padding: 40px;                           /* İçerik kenar boşlukları */
+  margin: 0 10px;                          /* Kartlar arasında boşluk */
+  scroll-snap-align: start;                /* Otomatik kaydırma için */
+  transition: transform 0.3s ease;         /* Hover animasyonu */
+}
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(7, 5, 5, 0.2);
+}
+.testimonial-card p {
+  font-style: italic; color: #555; line-height: 1.4; margin-bottom: 15px;
+}
+.testimonial-card h4 {
+  font-weight: bold; color: #333; margin: 0;
+}
+.testimonial-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0,0,0,0.5); color: white; border: none;
+  font-size: 1.8em; padding: 10px; border-radius: 50%; cursor: pointer;
+  z-index: 2;
+}
+.testimonial-nav.prev { left: -20px; }
+.testimonial-nav.next { right: -20px; }
+.testimonial-nav:hover { background: rgba(0,0,0,0.8); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testimonials-container { gap: 10px; padding: 10px 0; }
+  .testimonial-card { flex: 0 0 200px; }
+  .testimonial-nav.prev { left: 5px; }
+  .testimonial-nav.next { right: 5px; }
+}
+
+.contact {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.contact input, .contact textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact button:hover {
+  background: #45a049;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+}
+
+.slides-container {
+  display: flex;
+  /*width: 300%;*/
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.slide img {
+  width: 100%;
+  height: 700px;
+  object-fit: cover;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+@keyframes slideAnimation {
+  0% { transform: translateX(0%); }
+  25% { transform: translateX(0%); }
+  33% { transform: translateX(-100%); }
+  58% { transform: translateX(-100%); }
+  66% { transform: translateX(-200%); }
+  91% { transform: translateX(-200%); }
+  100% { transform: translateX(0%); }
+}
+
+.hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      gap: 50px;
+      background-color: #fff;
+    }
+    .hero-image img {
+      display: block;
+      max-width: 700px;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .hero-content {
+      max-width: 600px;
+    }
+    .hero-content h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .hero-content p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #555;
+    }
+    .hero-content .button {
+      padding: 15px 30px;
+      background-color: #f72b57;
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .hero-content .button:hover {
+      background-color: #c61d42;
+    }
+    
+
+</style>
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="baslik">ABİM | İlim, Ahlak ve Teknoloji</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Anasayfa</a></li>
+        <li><a href="hakkimizda.html">Hakkımızda</a></li>
+        <li><a href="iletisim.html">İletişim</a></li>
+        <li><a href="egitimler.php">Eğitimler</a></li>
+        <li><a href="blog.php">Blog</a></li>
+        <li><a href="youtube.html">YouTube</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="slider">
+      <div class="slides-container">
+        <div class="slide active">
+          <img src="uploads/banner.png" alt="Slider 1">
+        </div>
+        <div class="slide">
+          <img src="uploads/application.png" alt="Slider 2">
+        </div>
+        
+      </div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </section>
+
+<!--ERBAKAN BÖLÜMÜ-->
+<div class="hero">
+  <div class="hero-image">
+    <img src="uploads/ERBAKAN.jpg" alt="Başkan Fotoğrafı">
+  </div>
+  <div class="hero-content">
+    <h2>Sevgili Gençler!</h2>
+    <p>Sizlerden bir şey istiyorum. Heyecan, heyecan, heyecan. Neyin heyecanını istiyorum biliyor musunuz?
+      Neyin heyecanını istiyorum biliyor musunuz? 
+Varoşlarda yaşayıp, şehirlerin kenarlarındaki çöplüklerden, evine yiyecek toplayan çocukları kurtarmanın heyecanını istiyorum.
+    </p>
+    <a href="https://www.youtube.com/watch?v=xKbGRCOyIqA" class="button">Necmeddin Erbakan'dan Mesajınız Var!</a>
+  </div>
+</div>
+<!--ERBAKAN BÖLÜMÜ-->
+
+
+    
+    <section class="counters">
+      <div class="counter">
+        <h2 id="students">15</h2>
+        <p>Öğrenci</p>
+      </div>
+      <div class="counter">
+        <h2 id="courses">3</h2>
+        <p>Tamamlanan Kurs</p>
+      </div>
+      <div class="counter">
+        <h2 id="projects">100</h2>
+        <p>Proje</p>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+      </div>
+      <div class="about-content">
+        <h2>Hakkımızda</h2>
+        <p>Biz, yazılım ve teknoloji alanında eğitimler sunan bir ekibiz. Amacımız herkesin kendini geliştirmesine yardımcı olmak.</p>
+        <a href="hakkimizda.html" class="about-btn">Daha Fazla Bilgi</a>
+      </div>
+    </section>
+
+    <section class="courses">
+      <div class="container">
+        <h2>Eğitimlerimiz</h2>
+        <div class="course-list">
+    
+          <div class="course-item">
+            <div class="icon">💻</div>
+            <h3>Web Geliştirme</h3>
+            <p>HTML, CSS, JavaScript öğrenin!</p>
+            <button class="enroll-btn">Eğitime Katıl</button>
+          </div>
+    
+          <div class="course-item">
+            <div class="icon">🐍</div>
+            <h3>Python Programlama</h3>
+            <p>Python ile yazılım dünyasına adım atın.</p>
+            <button class="enroll-btn">Eğitime Katıl</button>
+          </div>
+    
+          <div class="course-item">
+            <div class="icon">📱</div>
+            <h3>Mobil Uygulama</h3>
+            <p>Android ve iOS uygulamaları geliştirin.</p>
+            <button class="enroll-btn">Eğitime Katıl</button>
+          </div>
+    
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="container">
+        <h2>Öğrenci Yorumları</h2>
+        <div class="testimonials-wrapper">
+          
+          <div class="testimonials-container">
+            <!-- 10 adet kart -->
+            <div class="testimonial-card">
+              <p>"Buradaki eğitimler sayesinde kariyerime yön verdim!"</p>
+              <h4>- Ahmet Yılmaz</h4>
+            </div>
+            <div class="testimonial-card">
+              <p>"Anlatım çok sade ve anlaşılırdı, herkese tavsiye ederim."</p>
+              <h4>- Ayşe Demir</h4>
+            </div>
+            <div class="testimonial-card">
+              <p>"Eğitmenler gerçekten işini bilen uzmanlar."</p>
+              <h4>- Mehmet Kara</h4>
+            </div>
+            <div class="testimonial-card">
+              <p>"Projelerle pratik yaparak öğrendim, süperdi!"</p>
+              <h4>- Elif Şahin</h4>
+            </div>
+            <div class="testimonial-card">
+              <p>"Destek ekibi her soruma anında cevap verdi."</p>
+              <h4>- Canan Aydın</h4>
+            </div>
+            <div class="testimonial-card">
+              <p>"Kariyerimde büyük ilerleme kaydettim."</p>
+              <h4>- Burak Demir</h4>
+            </div>
+            <div class="testimonial-card">
+              <p>"Öğrenme platformu çok akıcı ve eğlenceli."</p>
+              <h4>- Zeynep Uslu</h4>
+            </div>
+            <div class="testimonial-card">
+              <p>"Test soruları ve ödevler çok faydalıydı."</p>
+              <h4>- Serkan Yılmaz</h4>
+            </div>
+            <div class="testimonial-card">
+              <p>"Sadece ders değil, network de kazandım."</p>
+              <h4>- Pelin Aksoy</h4>
+            </div>
+            <div class="testimonial-card">
+              <p>"Kesinlikle tavsiye ederim, mükemmel içerik."</p>
+              <h4>- Emre Kaya</h4>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="container">
+        <h2>İletişime Geçin</h2>
+        <form>
+          <input type="text" placeholder="Adınız" required>
+          <input type="email" placeholder="Email Adresiniz" required>
+          <textarea placeholder="Mesajınız" required></textarea>
+          <button type="submit">Gönder</button>
+        </form>
+      </div>
+    </section>
+    
+    
+    
+    
+    
+  </main>
+
+  <footer>
+    <p>Tüm hakları saklıdır &copy; 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
